@@ -3,8 +3,9 @@ import { Container } from '@mui/system';
 import React from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { useTimesheetsContext } from '../context/Timesheets.context';
-import { ITimesheets, PayTypeEnum } from '../models/Timesheets.type';
+import { ITimesheets } from '../models/Timesheets.type';
 import { FIELD_REQUIRED_MESSAGE } from '@/constants/app.constants';
+import { PayTypeEnum } from '@/features/employees/models/Groups.type';
 
 type props = {
   register: UseFormRegister<ITimesheets>;

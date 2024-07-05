@@ -3,7 +3,7 @@ import { Container } from '@mui/system';
 import React from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { useGroupsContext } from '../context/Groups.context';
-import { IEmployees, PayType, PayTypeEnum } from '../models/Groups.type';
+import { IEmployees, PayTypeEnum } from '../models/Groups.type';
 import { FIELD_REQUIRED_MESSAGE } from '@/constants/app.constants';
 
 type props = {
