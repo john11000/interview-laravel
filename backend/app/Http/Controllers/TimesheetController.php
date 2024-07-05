@@ -13,6 +13,11 @@ class TimesheetController extends Controller
         return Timesheet::where('user_id', Auth::id())->get();
     }
 
+    public function list()
+    {
+        return Timesheet::all();
+    }
+
     public function store(Request $request)
     {
         $request->validate([
