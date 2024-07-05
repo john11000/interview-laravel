@@ -1,23 +1,26 @@
-import * as React from "react";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+import * as React from 'react';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 
 import {
   ROUTER_LINK_CUSTOMERS,
   ROUTER_LINK_EMPLOYEES,
   ROUTER_LINK_TIMESHEETS,
-
-} from "@/constants/routes-link.constants";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import { Tooltip } from "@material-ui/core";
+} from '@/constants/routes-link.constants';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { Tooltip } from '@material-ui/core';
+import { TITLE_MODULE_CUSTOMER, TITLE_MODULE_EMPLEADOS, TITLE_MODULE_NOMINA } from '@/constants/title.constants';
 import {
-  TITLE_MODULE_CUSTOMER,
-  TITLE_MODULE_EMPLEADOS,
-  TITLE_MODULE_NOMINA,
-} from "@/constants/title.constants";
-import { Category, DashboardCustomizeRounded, Favorite, Person, Person2Sharp, Person2TwoTone, PersonSearch } from "@mui/icons-material";
+  Category,
+  DashboardCustomizeRounded,
+  Favorite,
+  Person,
+  Person2Sharp,
+  Person2TwoTone,
+  PersonSearch,
+} from '@mui/icons-material';
 
 export const ListItems = () => {
   const router = useRouter();
@@ -60,7 +63,6 @@ export const ListItems = () => {
           <ListItemText primary={TITLE_MODULE_NOMINA} />
         </ListItemButton>
       </Tooltip>
-
     </React.Fragment>
   );
 };

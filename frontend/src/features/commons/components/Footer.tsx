@@ -1,25 +1,21 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography } from '@mui/material';
 
 type props = {
   py: number;
-  position: "absolute" | "relative" | "fixed";
+  position: 'absolute' | 'relative' | 'fixed';
   bottom: string;
 };
 
-const Footer: React.FC<Partial<props>> = ({
-  py = 2,
-  position = "absolute",
-  bottom = "20px",
-}): JSX.Element => {
+const Footer: React.FC<Partial<props>> = ({ py = 2, position = 'absolute', bottom = '20px' }): JSX.Element => {
   return (
     <Box
       sx={{
         py: py,
         position: position,
         bottom: bottom,
-        textAlign: "center",
-        width: "100%",
-        margin: "auto",
+        textAlign: 'center',
+        width: '100%',
+        margin: 'auto',
       }}
     >
       <Typography align="center" variant="body2" color="textSecondary">

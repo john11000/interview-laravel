@@ -1,6 +1,6 @@
-import { toast, ToastContent } from "react-toastify";
+import { toast, ToastContent } from 'react-toastify';
 
-type ToastType = "success" | "error" | "warning" | "info";
+type ToastType = 'success' | 'error' | 'warning' | 'info';
 type ReactText = string | number;
 class ToastsManager {
   private static _currentToastId: ReactText | null = null;

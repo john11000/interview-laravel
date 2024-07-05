@@ -1,5 +1,5 @@
-"use client"
-import LoginContainer from "../features/login/containers/LoginContainer";
+'use client';
+import LoginContainer from '../features/login/containers/LoginContainer';
 
 export default function Index() {
   return (

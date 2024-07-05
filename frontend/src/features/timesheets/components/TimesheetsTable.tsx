@@ -1,15 +1,5 @@
-import MUIDataTable, {
-  MUIDataTableColumnDef,
-  MUIDataTableMeta,
-  MUIDataTableOptions,
-} from 'mui-datatables';
-import {
-  Typography,
-  CircularProgress,
-  Stack,
-  Select,
-  MenuItem,
-} from '@mui/material';
+import MUIDataTable, { MUIDataTableColumnDef, MUIDataTableMeta, MUIDataTableOptions } from 'mui-datatables';
+import { Typography, CircularProgress, Stack, Select, MenuItem } from '@mui/material';
 import { MUIDataTableDefaultOptions } from '@/constants/muidatatable.constants';
 import { Add, Details } from '@mui/icons-material';
 import Button from '@mui/material/Button';
@@ -29,17 +19,8 @@ interface Props {
   updateTable: () => void;
 }
 
-export default function TimesheetsTable({
-  Timesheets,
-  loading,
-  updateTable,
-}: Props) {
-  const {
-    setGroupToEdit,
-    openEditGroupDialog,
-    setTitleGroupDialog,
-    setIsEdit,
-  } = useTimesheetsContext();
+export default function TimesheetsTable({ Timesheets, loading, updateTable }: Props) {
+  const { setGroupToEdit, openEditGroupDialog, setTitleGroupDialog, setIsEdit } = useTimesheetsContext();
 
   const getRole = useSelector((state: AppStore) => state.authState.user.role);
 
@@ -73,10 +54,7 @@ export default function TimesheetsTable({
       name: 'payPeriodStart',
       label: 'payPeriodStart',
       options: {
-        customBodyRender: (
-          payPeriodStart: any,
-          dataTable: { rowData: any[] },
-        ) => {
+        customBodyRender: (payPeriodStart: any, dataTable: { rowData: any[] }) => {
           return (
             <Typography
               sx={{
@@ -96,10 +74,7 @@ export default function TimesheetsTable({
       name: 'payPeriodEnd',
       label: 'payPeriodEnd',
       options: {
-        customBodyRender: (
-          payPeriodEnd: any,
-          dataTable: { rowData: any[] },
-        ) => {
+        customBodyRender: (payPeriodEnd: any, dataTable: { rowData: any[] }) => {
           return (
             <Typography
               sx={{
@@ -137,31 +112,21 @@ export default function TimesheetsTable({
               value={status}
               onChange={(e) => {
                 if (getRole == 'Customer') {
-                  toastsManager.showToast(
-                    'warning',
-                    "You don't have permission to change the status",
-                  );
+                  toastsManager.showToast('warning', "You don't have permission to change the status");
                 } else if (getRole == 'Admin') {
                   updateTimesheets({
                     id: Timesheets[0].id,
                     status: e.target.value as string,
                   }).finally(() => {
-                    toastsManager.showToast(
-                      'success',
-                      'The status has been updated successfully',
-                    );
+                    toastsManager.showToast('success', 'The status has been updated successfully');
                     updateTable();
                   });
                 }
               }}
             >
-              <MenuItem value={TimesheetStatus?.APPROVED}>
-                {'Approved'}
-              </MenuItem>
+              <MenuItem value={TimesheetStatus?.APPROVED}>{'Approved'}</MenuItem>
               <MenuItem value={TimesheetStatus?.PENDING}>{'Pending'}</MenuItem>
-              <MenuItem value={TimesheetStatus?.REJECTED}>
-                {'Rejected'}
-              </MenuItem>
+              <MenuItem value={TimesheetStatus?.REJECTED}>{'Rejected'}</MenuItem>
             </Select>
           );
         },
@@ -173,11 +138,7 @@ export default function TimesheetsTable({
       options: {
         customBodyRender: (id: string, meta: MUIDataTableMeta<unknown>) => {
           return (
-            <Stack
-              flexDirection="row"
-              justifyContent="space-between"
-              alignItems="center"
-            >
+            <Stack flexDirection="row" justifyContent="space-between" alignItems="center">
               <Button
                 variant="outlined"
                 startIcon={<Details />}

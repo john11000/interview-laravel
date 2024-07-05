@@ -1,0 +1,18 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all HTML files:
+*.html
+
+.next
+.babelrc
+.eslintrc.js
+.prettierrc.js
+
+**/__generated__/*
+*.graphql.d.ts
+
+next-env.d.ts
+
+codegen.yml

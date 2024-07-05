@@ -1,5 +1,5 @@
-import { URL_API_CITIES } from "@/constants/url-apis.constants";
-import useFetch from "./useFetch";
+import { URL_API_CITIES } from '@/constants/url-apis.constants';
+import useFetch from './useFetch';
 
 export default function useGetDepartaments() {
   const { request, loading } = useFetch();

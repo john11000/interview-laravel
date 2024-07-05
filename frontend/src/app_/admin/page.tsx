@@ -1,5 +1,5 @@
-"use client"
-import AdminContainer from "@ocmi/frontend/features/login copy/containers/AdminContainer";
+'use client';
+import AdminContainer from '@ocmi/frontend/features/login copy/containers/AdminContainer';
 
 export default function Index() {
   return (

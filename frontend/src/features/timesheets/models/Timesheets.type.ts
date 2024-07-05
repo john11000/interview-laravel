@@ -1,27 +1,27 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from 'react';
 
 export interface Root {
-  timesheets: ITimesheets[]
+  timesheets: ITimesheets[];
 }
 
 export interface ITimesheets {
-  id: string
-  payPeriodStart: string
-  payPeriodEnd: string
-  grossPayroll: number
-  notes: any
-  checkDate: string
-  status: string
-  customerId: string
-  timesheetEntries: TimesheetEntry[]
+  id: string;
+  payPeriodStart: string;
+  payPeriodEnd: string;
+  grossPayroll: number;
+  notes: any;
+  checkDate: string;
+  status: string;
+  customerId: string;
+  timesheetEntries: TimesheetEntry[];
 }
 
 export interface TimesheetEntry {
-  employeeName: string
-  grossWages: number
-  payRate: number
-  payType: string
-  hours: number
+  employeeName: string;
+  grossWages: number;
+  payRate: number;
+  payType: string;
+  hours: number;
 }
 
 export enum TimesheetStatus {

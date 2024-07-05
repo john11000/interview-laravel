@@ -1,11 +1,11 @@
 export const UserSessionEmpty: UserSession = {
-  email: "",
-  role: "",
+  email: '',
+  role: '',
 };
 
 export const AuthEmptyState: AuthSession = {
   user: UserSessionEmpty,
-  accessToken: "",
+  accessToken: '',
 };
 
 export interface UserSession {

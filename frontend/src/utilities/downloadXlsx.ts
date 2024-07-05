@@ -7,7 +7,7 @@
  */
 export function downloadXLSX(xlsx: string, fileName: string) {
   const linkSource = `data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,${xlsx}`;
-  const downloadLink = document.createElement("a");
+  const downloadLink = document.createElement('a');
 
   downloadLink.href = linkSource;
   downloadLink.download = fileName;

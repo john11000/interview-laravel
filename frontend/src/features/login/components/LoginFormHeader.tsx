@@ -1,5 +1,5 @@
-import Logo1 from "@/features/commons/Logo1";
-import { Typography } from "@mui/material";
+import Logo1 from '@/features/commons/Logo1';
+import { Typography } from '@mui/material';
 
 export default function LoginFormHeader() {
   return (

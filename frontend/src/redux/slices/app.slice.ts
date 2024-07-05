@@ -1,8 +1,8 @@
-import { AppEmptyState } from "@/models/app.type";
-import { createSlice } from "@reduxjs/toolkit";
+import { AppEmptyState } from '@/models/app.type';
+import { createSlice } from '@reduxjs/toolkit';
 
 export const appSlice = createSlice({
-  name: "app",
+  name: 'app',
   initialState: AppEmptyState,
   reducers: {
     setAppBarTitle: (state, action: { payload: string; type: string }) => {
@@ -18,7 +18,6 @@ export const appSlice = createSlice({
   },
 });
 
-export const { setAppBarTitle, setDrawerOpen, resetAppState } =
-  appSlice.actions;
+export const { setAppBarTitle, setDrawerOpen, resetAppState } = appSlice.actions;
 
 export default appSlice.reducer;

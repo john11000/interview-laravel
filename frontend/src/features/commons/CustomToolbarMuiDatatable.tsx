@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 // Material ui core
 
 // Material ui icons
-import AddIcon from "@mui/icons-material/Add";
-import { Fab, Tooltip } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
+import { Fab, Tooltip } from '@mui/material';
 
 interface Props {
   tooltip: string;

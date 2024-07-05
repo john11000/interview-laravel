@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
-import { URL_API_BASE } from "@/constants/url-apis.constants";
-import axios from "axios";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import { ROUTE_LINK_LOGIN } from "@/constants/routes-link.constants";
-import { toastsManager } from "@/utilities";
+import { URL_API_BASE } from '@/constants/url-apis.constants';
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { ROUTE_LINK_LOGIN } from '@/constants/routes-link.constants';
+import { toastsManager } from '@/utilities';
 
 // axios instance
 const instance = axios.create({
@@ -16,12 +16,12 @@ interface Props {
 }
 
 const AxiosInterceptor = ({ children }: Props) => {
-  console.log("interceptor");
+  console.log('interceptor');
   const route = useRouter();
 
   useEffect(() => {
     const resInterceptor = (response: any) => {
-      console.log("resInterceptor");
+      console.log('resInterceptor');
       return response;
     };
 
@@ -35,32 +35,26 @@ const AxiosInterceptor = ({ children }: Props) => {
         if (error.response.status === 400 || error.response.status === 409) {
           if (Array.isArray(error.response.data.message)) {
             const er = error.response.data.message as string[];
-            toastsManager.showToast("error", er.join());
+            toastsManager.showToast('error', er.join());
           } else if (error.response.data.message) {
-            toastsManager.showToast("error", error.response.data.message);
+            toastsManager.showToast('error', error.response.data.message);
           }
           return Promise.reject();
         }
 
         if (error.response.status === 404) {
-          toastsManager.showToast("error", "Recurso no encontrado");
+          toastsManager.showToast('error', 'Recurso no encontrado');
           return Promise.reject();
         }
 
-        toastsManager.showToast(
-          "error",
-          "Ocurrió un error, contacta con soporte"
-        );
+        toastsManager.showToast('error', 'Ocurrió un error, contacta con soporte');
         return Promise.reject();
       }
-      toastsManager.showToast("error", "No se pudo conectar con el servidor");
+      toastsManager.showToast('error', 'No se pudo conectar con el servidor');
       return Promise.reject();
     };
 
-    const interceptor = instance.interceptors.response.use(
-      resInterceptor,
-      errInterceptor
-    );
+    const interceptor = instance.interceptors.response.use(resInterceptor, errInterceptor);
 
     return () => {
       instance.interceptors.response.eject(interceptor);

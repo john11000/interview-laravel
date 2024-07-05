@@ -21,11 +21,7 @@ const TimesheetsContainer = () => {
   return (
     <TimesheetsProvider>
       <TimesheetsSettings />
-      <TimesheetsTable
-        Timesheets={TimesheetsData || []}
-        loading={false}
-        updateTable={getTimesheetsFromApi}
-      />
+      <TimesheetsTable Timesheets={TimesheetsData || []} loading={false} updateTable={getTimesheetsFromApi} />
       <TimesheetsEditDialog getTimesheetsFromApi={getTimesheetsFromApi} />
     </TimesheetsProvider>
   );

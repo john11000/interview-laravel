@@ -3,6 +3,6 @@ export interface AppState {
   drawerOpen: boolean;
 }
 export const AppEmptyState: AppState = {
-  appBarTitle: "",
+  appBarTitle: '',
   drawerOpen: true,
 };

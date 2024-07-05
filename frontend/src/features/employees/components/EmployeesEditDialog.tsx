@@ -1,14 +1,14 @@
-import { toastsManager } from "@/utilities";
-import { LoadingButton } from "@mui/lab";
-import { Dialog, DialogContent, DialogActions, Button } from "@mui/material";
-import DialogTitle from "@mui/material/DialogTitle";
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { useGroupsContext } from "../context/Groups.context";
-import { EmployeesFormEdit } from "./EmployeesFormEdit";
-import { IEmployees } from "../models/Groups.type";
-import useUpdateEmployees from "../hooks/useUpdateEmployees";
-import useCreateEmployee from "../hooks/useCreateEmployees";
+import { toastsManager } from '@/utilities';
+import { LoadingButton } from '@mui/lab';
+import { Dialog, DialogContent, DialogActions, Button } from '@mui/material';
+import DialogTitle from '@mui/material/DialogTitle';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useGroupsContext } from '../context/Groups.context';
+import { EmployeesFormEdit } from './EmployeesFormEdit';
+import { IEmployees } from '../models/Groups.type';
+import useUpdateEmployees from '../hooks/useUpdateEmployees';
+import useCreateEmployee from '../hooks/useCreateEmployees';
 
 interface Props {
   getEmployeesFromApi: () => void;
@@ -17,12 +17,7 @@ interface Props {
 export default function EmployeesEditDialog({ getEmployeesFromApi }: Props) {
   const { groupToEdit } = useGroupsContext();
   const { updateEmployees, loading } = useUpdateEmployees();
-  const {
-    openEditGroupDialogState,
-    closeEditGroupDialog,
-    titleGroupDialog,
-    isEdit,
-  } = useGroupsContext();
+  const { openEditGroupDialogState, closeEditGroupDialog, titleGroupDialog, isEdit } = useGroupsContext();
   const { createEmployee, loading: loadingCreate } = useCreateEmployee();
   const {
     reset,
@@ -33,10 +28,10 @@ export default function EmployeesEditDialog({ getEmployeesFromApi }: Props) {
 
   const handleOnSave = async (data: IEmployees) => {
     try {
-      debugger
+      debugger;
 
       let res,
-        text = "Actualizado";
+        text = 'Actualizado';
       if (isEdit) {
         res = await updateEmployees({
           id: groupToEdit?.id || 0,
@@ -45,22 +40,22 @@ export default function EmployeesEditDialog({ getEmployeesFromApi }: Props) {
           payType: data.payType,
         });
       } else {
-        text = "Creado";
+        text = 'Creado';
         res = await createEmployee({
-          name: data?.name || "",
+          name: data?.name || '',
           payRate: Number(data.payRate),
           payType: data.payType,
         });
       }
       if (res.status === 200 || res.status === 201) {
         closeEditGroupDialog();
-        toastsManager.showToast("success", "Grupo " + text + " Correctamente");
+        toastsManager.showToast('success', 'Grupo ' + text + ' Correctamente');
         await getEmployeesFromApi();
       } else {
-        toastsManager.showToast("error", "Respuesta no esperada");
+        toastsManager.showToast('error', 'Respuesta no esperada');
       }
     } catch (error) {
-      toastsManager.showToast("error", error);
+      toastsManager.showToast('error', error);
       console.error(error);
     }
   };
@@ -73,30 +68,17 @@ export default function EmployeesEditDialog({ getEmployeesFromApi }: Props) {
   }, [openEditGroupDialogState]);
 
   return (
-    <Dialog
-      open={openEditGroupDialogState}
-      onClose={closeEditGroupDialog}
-      fullWidth
-      maxWidth="md"
-    >
+    <Dialog open={openEditGroupDialogState} onClose={closeEditGroupDialog} fullWidth maxWidth="md">
       <form noValidate onSubmit={handleSubmit(handleOnSave)}>
         <DialogTitle>{titleGroupDialog}</DialogTitle>
         <DialogContent>
           <EmployeesFormEdit register={register} errors={errors}></EmployeesFormEdit>
         </DialogContent>
         <DialogActions>
-          <LoadingButton
-            variant="contained"
-            loading={loading || loadingCreate}
-            type="submit"
-          >
+          <LoadingButton variant="contained" loading={loading || loadingCreate} type="submit">
             Guardar
           </LoadingButton>
-          <Button
-            variant="contained"
-            color="inherit"
-            onClick={closeEditGroupDialog}
-          >
+          <Button variant="contained" color="inherit" onClick={closeEditGroupDialog}>
             Cancelar
           </Button>
         </DialogActions>

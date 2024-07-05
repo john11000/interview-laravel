@@ -66,11 +66,7 @@ export default function TimesheetModal({
                 />
               </Box>
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
-                <Button
-                  variant="contained"
-                  onClick={handleClose}
-                  sx={{ mr: 2 }}
-                >
+                <Button variant="contained" onClick={handleClose} sx={{ mr: 2 }}>
                   Cancel
                 </Button>
                 <Button

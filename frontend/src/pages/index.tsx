@@ -1,6 +1,6 @@
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 export default function IndexPage() {
   const router = useRouter();
-  router.push("/login");
+  router.push('/login');
 }

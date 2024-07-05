@@ -1,26 +1,19 @@
-import { styled } from "@mui/material/styles";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import {
-  IconButton,
-  Menu,
-  MenuItem,
-  Toolbar,
-  Typography,
-  Box,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { useDispatch, useSelector } from "react-redux";
-import { AppStore } from "@/redux/store";
-import { AccountCircle } from "@mui/icons-material";
-import { useState } from "react";
-import LogoutIcon from "@mui/icons-material/Logout";
+import { styled } from '@mui/material/styles';
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import { IconButton, Menu, MenuItem, Toolbar, Typography, Box } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppStore } from '@/redux/store';
+import { AccountCircle } from '@mui/icons-material';
+import { useState } from 'react';
+import LogoutIcon from '@mui/icons-material/Logout';
 // import NotificationsIcon from '@mui/icons-material/Notifications';
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import { useRouter } from "next/router";
-import { ROUTE_LINK_LOGIN } from "@/constants/routes-link.constants";
-import { resetCredentials } from "@/redux/slices/auth.slice";
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import { useRouter } from 'next/router';
+import { ROUTE_LINK_LOGIN } from '@/constants/routes-link.constants';
+import { resetCredentials } from '@/redux/slices/auth.slice';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -28,17 +21,17 @@ interface AppBarProps extends MuiAppBarProps {
 const drawerWidth = 240;
 
 const AppBarStyled = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
+  shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarProps>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
+  transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
+    transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -50,7 +43,7 @@ interface Props {
   toggleDrawer: () => void;
 }
 
-const menuId = "primary-search-account-menu";
+const menuId = 'primary-search-account-menu';
 
 const AppBar = ({ open, toggleDrawer }: Props) => {
   const appState = useSelector((state: AppStore) => state.appState);
@@ -78,20 +71,20 @@ const AppBar = ({ open, toggleDrawer }: Props) => {
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
+        vertical: 'top',
+        horizontal: 'right',
       }}
       id={menuId}
       keepMounted
       transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
+        vertical: 'top',
+        horizontal: 'right',
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
       <Box mx={2} my={2}>
-        <Typography sx={{ fontWeight: "bold" }} align="center">
+        <Typography sx={{ fontWeight: 'bold' }} align="center">
           {authState.user.email}
         </Typography>
       </Box>
@@ -109,7 +102,7 @@ const AppBar = ({ open, toggleDrawer }: Props) => {
       <AppBarStyled position="absolute" open={open}>
         <Toolbar
           sx={{
-            pr: "24px", //  keep right padding when drawer closed
+            pr: '24px', //  keep right padding when drawer closed
           }}
         >
           {open && (
@@ -123,19 +116,13 @@ const AppBar = ({ open, toggleDrawer }: Props) => {
             aria-label="open drawer"
             onClick={toggleDrawer}
             sx={{
-              marginRight: "36px",
-              ...(open && { display: "none" }),
+              marginRight: '36px',
+              ...(open && { display: 'none' }),
             }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            sx={{ flexGrow: 1 }}
-          >
+          <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
             {appState.appBarTitle}
           </Typography>
           {/* <Badge badgeContent={4} color="info">

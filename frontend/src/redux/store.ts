@@ -1,24 +1,10 @@
-import { AppState, AuthSession } from "@/models";
-import {
-  configureStore,
-  combineReducers,
-  Reducer,
-  AnyAction,
-} from "@reduxjs/toolkit";
-import thunk from "redux-thunk";
-import authSlice from "./slices/auth.slice";
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  persistReducer,
-  PURGE,
-  REGISTER,
-  REHYDRATE,
-  persistStore,
-} from "redux-persist";
-import appSlice from "./slices/app.slice";
-import createWebStorage from "redux-persist/lib/storage/createWebStorage";
+import { AppState, AuthSession } from '@/models';
+import { configureStore, combineReducers, Reducer, AnyAction } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
+import authSlice from './slices/auth.slice';
+import { FLUSH, PAUSE, PERSIST, persistReducer, PURGE, REGISTER, REHYDRATE, persistStore } from 'redux-persist';
+import appSlice from './slices/app.slice';
+import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 
 const createNoopStorage = () => {
   return {
@@ -34,10 +20,7 @@ const createNoopStorage = () => {
   };
 };
 
-const storage =
-  typeof window !== "undefined"
-    ? createWebStorage("local")
-    : createNoopStorage();
+const storage = typeof window !== 'undefined' ? createWebStorage('local') : createNoopStorage();
 
 export interface AppStore {
   authState: AuthSession;
@@ -45,9 +28,9 @@ export interface AppStore {
 }
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
-  whitelist: ["authState", "appState"],
+  whitelist: ['authState', 'appState'],
 };
 
 const appReducer = combineReducers({
@@ -58,7 +41,7 @@ const appReducer = combineReducers({
 export type RootState = ReturnType<typeof appReducer>;
 
 const rootReducer: Reducer = (state: RootState, action: AnyAction) => {
-  if (action.type === "auth/resetCredentials") {
+  if (action.type === 'auth/resetCredentials') {
     state = {} as RootState;
   }
   return appReducer(state, action);
@@ -74,7 +57,7 @@ const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }).concat([thunk]),
-  devTools: process.env.NODE_ENV !== "production",
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 const persistor = persistStore(store);
