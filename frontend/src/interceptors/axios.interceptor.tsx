@@ -42,6 +42,15 @@ const AxiosInterceptor = ({ children }: Props) => {
           return Promise.reject();
         }
 
+        if (error.response.status === 422) {
+          if (error.response.data.error) {
+            toastsManager.showToast('error', error.response.data.error);
+          } else {
+            toastsManager.showToast('error', 'Validation error occurred');
+          }
+          return Promise.reject();
+        }
+
         if (error.response.status === 404) {
           toastsManager.showToast('error', 'Recurso no encontrado');
           return Promise.reject();

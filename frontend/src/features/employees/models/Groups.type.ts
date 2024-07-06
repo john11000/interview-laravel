@@ -3,8 +3,8 @@ import { Dispatch, SetStateAction } from 'react';
 export interface IEmployees {
   id: number;
   name: string;
-  payType: string;
-  payRate: number;
+  payment_type: string;
+  payment_amount: number;
 }
 
 export enum PayTypeEnum {

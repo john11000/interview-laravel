@@ -8,7 +8,7 @@ export const TimesheetsProvider = ({ children }: PropsProvider) => {
   const [groupToEdit, setGroupToEdit] = useState<ITimesheets | undefined>();
   const [openEditGroupDialogState, setopenEditGroupDialogState] = useState(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const [titleGroupDialog, setTitleGroupDialog] = useState<string>('Crear grupo');
+  const [titleGroupDialog, setTitleGroupDialog] = useState<string>('Create timesheets');
   const [timesheets, setTimesheets] = useState<ITimesheets[]>([]);
   const openEditGroupDialog = () => {
     setopenEditGroupDialogState(true);

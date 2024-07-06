@@ -8,7 +8,7 @@ export const GroupsProvider = ({ children }: PropsProvider) => {
   const [groupToEdit, setGroupToEdit] = useState<IGroups | undefined>();
   const [openEditGroupDialogState, setopenEditGroupDialogState] = useState(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const [titleGroupDialog, setTitleGroupDialog] = useState<string>('Crear grupo');
+  const [titleGroupDialog, setTitleGroupDialog] = useState<string>('Create employees');
   const [groups, setGroups] = useState<IGroups[]>([]);
   const openEditGroupDialog = () => {
     setopenEditGroupDialogState(true);
@@ -43,7 +43,7 @@ export const useGroupsContext = (): IGroupsContext => {
   const context = useContext(GroupsContext);
 
   if (context === undefined) {
-    throw new Error('GroupsContext debe usarse dentro de GroupsProvider');
+    throw new Error('EmployeesContext debe usarse dentro de GroupsProvider');
   }
 
   return context;

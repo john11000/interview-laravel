@@ -28,23 +28,21 @@ export default function EmployeesEditDialog({ getEmployeesFromApi }: Props) {
 
   const handleOnSave = async (data: IEmployees) => {
     try {
-      debugger;
-
       let res,
         text = 'Actualizado';
       if (isEdit) {
         res = await updateEmployees({
           id: groupToEdit?.id || 0,
-          payRate: Number(data.payRate),
+          payment_amount: Number(data.payment_amount),
           name: data.name,
-          payType: data.payType,
+          payment_type: data.payment_type,
         });
       } else {
         text = 'Creado';
         res = await createEmployee({
           name: data?.name || '',
-          payRate: Number(data.payRate),
-          payType: data.payType,
+          payment_amount: Number(data.payment_amount),
+          payment_type: data.payment_type,
         });
       }
       if (res.status === 200 || res.status === 201) {
@@ -54,8 +52,9 @@ export default function EmployeesEditDialog({ getEmployeesFromApi }: Props) {
       } else {
         toastsManager.showToast('error', 'Respuesta no esperada');
       }
-    } catch (error) {
-      toastsManager.showToast('error', error);
+    } catch (error: any) {
+      const errorMessage = error?.response?.data?.error || error?.message || 'Ocurrió un error';
+      toastsManager.showToast('error', errorMessage);
       console.error(error);
     }
   };

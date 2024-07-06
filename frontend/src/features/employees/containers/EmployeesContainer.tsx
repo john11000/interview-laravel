@@ -11,7 +11,7 @@ const EmployeesContainer = () => {
   const [employeesData, setEmployeesData] = useState<IEmployees[]>();
   const getEmployeesFromApi = async () => {
     const employees = await getEmployees();
-    setEmployeesData(employees.data?.employees);
+    setEmployeesData(employees.data);
   };
 
   useEffect(() => {

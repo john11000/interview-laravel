@@ -51,31 +51,31 @@ export const EmployeesFormEdit: React.FC<props> = ({ register, errors }) => {
         </Grid>
         <Grid item sx={{ width: { xs: '100%', md: isEdit ? '50%' : '100%' } }}>
           <FormControl fullWidth error={!!errors.payType} size="small">
-            <InputLabel id="payType-label">Pay Type</InputLabel>
+            <InputLabel id="payment_type-label">Pay Type</InputLabel>
             <Select
-              labelId="payType-label"
-              id="payType"
-              defaultValue={groupToEdit?.payType}
+              labelId="payment_type-label"
+              id="payment_type"
+              defaultValue={groupToEdit?.payment_type}
               variant="outlined"
-              {...register('payType', { required: true })}
+              {...register('payment_type', { required: true })}
             >
               <MenuItem value={PayTypeEnum.HOURLY}>{PayTypeEnum.HOURLY}</MenuItem>
               <MenuItem value={PayTypeEnum.SALARY}>{PayTypeEnum.SALARY}</MenuItem>
             </Select>
-            {errors.payType?.type === 'required' && <FormHelperText>{FIELD_REQUIRED_MESSAGE}</FormHelperText>}
+            {errors.payment_type?.type === 'required' && <FormHelperText>{FIELD_REQUIRED_MESSAGE}</FormHelperText>}
           </FormControl>
         </Grid>
         <Grid item sx={{ width: { xs: '100%', md: isEdit ? '50%' : '100%' } }}>
           <FormControl fullWidth>
             <TextField
               required
-              error={!!errors.payRate}
-              defaultValue={groupToEdit?.payRate}
-              helperText={errors.payRate?.type === 'required' && FIELD_REQUIRED_MESSAGE}
-              label="Pay Rate"
+              error={!!errors.payment_amount}
+              defaultValue={groupToEdit?.payment_amount}
+              helperText={errors.payment_amount?.type === 'required' && FIELD_REQUIRED_MESSAGE}
+              label="Pay Amount"
               variant="outlined"
               size="small"
-              {...register('payRate', { required: true })}
+              {...register('payment_amount', { required: true })}
             />
           </FormControl>
         </Grid>

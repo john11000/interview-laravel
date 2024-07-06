@@ -28,8 +28,6 @@ export default function CustomersEditDialog({ getCustomerFromApi }: Props) {
 
   const handleOnSave = async (data: ICustomerss) => {
     try {
-      debugger;
-
       let res,
         text = 'Actualizado';
       if (isEdit) {

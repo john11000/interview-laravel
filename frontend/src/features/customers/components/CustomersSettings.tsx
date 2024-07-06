@@ -19,7 +19,7 @@ export default function CustomersSettings({}: Props) {
   return (
     <Box display="flex" justifyContent="flex-end" sx={{ my: 1 }}>
       <Button variant="contained" size="small" color="primary" onClick={() => handleAddGroup()} startIcon={<Add />}>
-        Añadir
+        Add
       </Button>
     </Box>
   );

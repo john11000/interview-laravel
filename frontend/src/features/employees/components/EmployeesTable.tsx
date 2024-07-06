@@ -52,11 +52,11 @@ export default function EmployeesTable({ employees, loading, updateTable }: Prop
       },
     },
     {
-      name: 'payType',
+      name: 'payment_type',
       label: 'Pay Type',
     },
     {
-      name: 'payRate',
+      name: 'payment_amount',
       label: 'Pay Rate',
     },
     {

@@ -13,13 +13,13 @@ export default function EmployeesSettings({}: Props) {
   const handleAddGroup = () => {
     setGroupToEdit(undefined);
     setIsEdit(false);
-    setTitleGroupDialog('Crear grupo');
+    setTitleGroupDialog('Create employee');
     openEditGroupDialog();
   };
   return (
     <Box display="flex" justifyContent="flex-end" sx={{ my: 1 }}>
       <Button variant="contained" size="small" color="primary" onClick={() => handleAddGroup()} startIcon={<Add />}>
-        Añadir
+        Add
       </Button>
     </Box>
   );

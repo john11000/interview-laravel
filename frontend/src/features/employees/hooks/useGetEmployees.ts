@@ -6,7 +6,7 @@ export default function useGetEmployees() {
   const { request, loading } = useFetch();
 
   const getEmployees = () => {
-    return request<{ employees: IEmployees[] }>({ url: URL_API_EMPLOYEES });
+    return request<IEmployees[]>({ url: URL_API_EMPLOYEES });
   };
 
   return {
