@@ -1,19 +1,19 @@
-import LoginForm from '../features/login/components/LoginForm';
+import RegisterForm from '../features/Register/components/RegisterForm';
 import { Container, Box } from '@mui/material';
-import LoginFormHeader from '@/features/login/components/LoginFormHeader';
+import RegisterFormHeader from '@/features/Register/components/RegisterFormHeader';
 import MainLayout from '@/features/commons/main-layout/MainLayout';
-import { LoginFormState, LoginResponse } from '@/features/login/models/login.type';
+import { RegisterFormState, RegisterResponse } from '@/features/Register/models/Register.type';
 import useFetchAndLoad from '@/hooks/useFetchAndLoad';
-import { doLogin } from '@/features/login/services/login.service';
+import { doRegister } from '@/features/Register/services/Register.service';
 import ToastsManager from '@/utilities/toasts.manager';
 import { AuthSession } from '@/models';
 import { setCredentials } from '@/redux/slices/auth.slice';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import { ROUTER_LINK_EMPLOYEES } from '@/constants/routes-link.constants';
+import { ROUTER_LINK_TIMESHEETS } from '@/constants/routes-link.constants';
 import { AxiosError, isAxiosError } from 'axios';
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const { loading, callEndpoint } = useFetchAndLoad();
   const dispatcher = useDispatch();
   const router = useRouter();
@@ -28,12 +28,12 @@ export default function LoginPage() {
     };
 
     dispatcher(setCredentials(newCredentials));
-    router.push(ROUTER_LINK_EMPLOYEES);
+    router.push('/login');
   };
 
-  const onSubmit = async (data: LoginFormState) => {
+  const onSubmit = async (data: RegisterFormState) => {
     try {
-      const response = await callEndpoint<LoginResponse>(doLogin(data));
+      const response = await callEndpoint<RegisterResponse>(doRegister(data));
       setSesion(response.data);
     } catch (error: any) {
       if (isAxiosError(error)) {
@@ -41,7 +41,7 @@ export default function LoginPage() {
 
         if (err.response) {
           if (err.response.status === 422) {
-            const errorMessage = err.response.data.error || err.response.data.message || 'Validation error occurred';
+            const errorMessage = err.response.data?.error || err.response.data?.message || 'Validation error occurred';
             ToastsManager.showToast('error', errorMessage);
           } else if (err.response.status === 400) {
             ToastsManager.showToast('error', err.response.data.message);
@@ -64,9 +64,9 @@ export default function LoginPage() {
     <MainLayout>
       <Container component="main" maxWidth="xs">
         <Box my={4}>
-          <LoginFormHeader />
+          <RegisterFormHeader />
         </Box>
-        <LoginForm onSubmit={onSubmit} loading={loading} />
+        <RegisterForm onSubmit={onSubmit} loading={loading} />
       </Container>
     </MainLayout>
   );

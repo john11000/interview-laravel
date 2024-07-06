@@ -12,21 +12,21 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { LoginFormState } from '../models/login.type';
+import { RegisterFormState } from '../models/Register.type';
 // import { ROUTE_LINK_RESET_PASSWORD } from '@/constants/routes-link.constants';
 // import Link from '@/features/commons/Link';
 import { Link } from '@/features/commons';
 interface Props {
-  onSubmit: (data: LoginFormState) => void;
+  onSubmit: (data: RegisterFormState) => void;
   loading: boolean;
 }
 
-export default function LoginForm({ onSubmit, loading }: Props) {
+export default function RegisterForm({ onSubmit, loading }: Props) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormState>();
+  } = useForm<RegisterFormState>();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -38,12 +38,26 @@ export default function LoginForm({ onSubmit, loading }: Props) {
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <Grid container justifyContent="center" spacing={2}>
+      <Grid item xs={12}>
+          <TextField
+            variant="outlined"
+            required
+            fullWidth
+            label="Name"
+            autoComplete="name"
+            {...register('name', {
+              required: { value: true, message: 'Campo requerido' },
+            })}
+            error={Boolean(errors.email?.message)}
+            helperText={errors.email?.message}
+          />
+        </Grid>
         <Grid item xs={12}>
           <TextField
             variant="outlined"
             required
             fullWidth
-            label="Correo electrónico"
+            label="Email"
             autoComplete="email"
             {...register('email', {
               required: { value: true, message: 'Campo requerido' },
@@ -104,8 +118,7 @@ export default function LoginForm({ onSubmit, loading }: Props) {
             <span>Ingresar</span>
           </LoadingButton>
         </Grid>
-        <Link href="/register">Registrarse</Link>
-
+        <Link href="/login">Iniciar sessión</Link>
       </Grid>
     </form>
   );
