@@ -5,15 +5,16 @@ export interface Root {
 }
 
 export interface ITimesheets {
-  id: string;
-  payPeriodStart: string;
-  payPeriodEnd: string;
-  grossPayroll: number;
-  notes: any;
-  checkDate: string;
+  id: number;
+  user_id: number;
+  check_date: string;
   status: string;
-  customerId: string;
-  timesheetEntries: TimesheetEntry[];
+  note: any;
+  created_at: string;
+  updated_at: string;
+  name: string;
+  pay_rate: string;
+  pay_type: string;
 }
 
 export interface TimesheetEntry {

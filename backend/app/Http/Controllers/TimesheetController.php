@@ -30,6 +30,8 @@ class TimesheetController extends Controller
             'name' => $request->name,
             'pay_rate' => $request->payRate,
             'pay_type' => $request->payType,
+            'user_id' => 1,
+            'check_date' => now(),
         ]);
 
         $timesheet->save();

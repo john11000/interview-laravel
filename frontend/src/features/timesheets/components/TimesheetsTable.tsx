@@ -52,7 +52,7 @@ export default function TimesheetsTable({ Timesheets, loading, updateTable }: Pr
     { name: 'id', options: { display: false } },
     {
       name: 'payPeriodStart',
-      label: 'payPeriodStart',
+      label: 'check_date',
       options: {
         customBodyRender: (payPeriodStart: any, dataTable: { rowData: any[] }) => {
           return (
@@ -72,7 +72,7 @@ export default function TimesheetsTable({ Timesheets, loading, updateTable }: Pr
     },
     {
       name: 'payPeriodEnd',
-      label: 'payPeriodEnd',
+      label: 'check_date',
       options: {
         customBodyRender: (payPeriodEnd: any, dataTable: { rowData: any[] }) => {
           return (
@@ -115,7 +115,7 @@ export default function TimesheetsTable({ Timesheets, loading, updateTable }: Pr
                   toastsManager.showToast('warning', "You don't have permission to change the status");
                 } else if (getRole == 'Admin') {
                   updateTimesheets({
-                    id: Timesheets[0].id,
+                    id: Timesheets[0].id.toString(),
                     status: e.target.value as string,
                   }).finally(() => {
                     toastsManager.showToast('success', 'The status has been updated successfully');

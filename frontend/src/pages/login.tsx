@@ -18,9 +18,9 @@ export default function LoginPage() {
   const dispatcher = useDispatch();
   const router = useRouter();
 
-  const setSesion = (newSession: LoginResponse) => {
+  const setSesion = (newSession: any) => {
     const newCredentials: AuthSession = {
-      accessToken: newSession.accessToken,
+      accessToken: newSession.access_token,
       user: {
         email: newSession.email,
         role: newSession.role,

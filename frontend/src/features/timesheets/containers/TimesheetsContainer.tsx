@@ -11,7 +11,7 @@ const TimesheetsContainer = () => {
   const [TimesheetsData, setTimesheetsData] = useState<ITimesheets[]>();
   const getTimesheetsFromApi = async () => {
     const Timesheets = await getTimesheets();
-    setTimesheetsData(Timesheets.data.timesheets);
+    setTimesheetsData(Timesheets.data);
   };
 
   useEffect(() => {

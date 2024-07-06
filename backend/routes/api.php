@@ -9,8 +9,6 @@ use App\Http\Controllers\ClientController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/timesheets', [TimesheetController::class, 'list']);
-Route::post('/timesheets', [TimesheetController::class, 'store']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
@@ -19,7 +17,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('employees', EmployeeController::class);
     Route::apiResource('clients', ClientController::class);
-
+    Route::get('/timesheets', [TimesheetController::class, 'list']);
+    Route::post('/timesheets', [TimesheetController::class, 'store']);
     Route::get('/timesheets/{id}', [TimesheetController::class, 'show']);
     Route::put('/timesheets/{id}', [TimesheetController::class, 'update']);
     Route::delete('/timesheets/{id}', [TimesheetController::class, 'destroy']);
